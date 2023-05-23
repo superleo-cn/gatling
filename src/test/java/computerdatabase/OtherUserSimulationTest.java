@@ -5,6 +5,7 @@ import io.gatling.javaapi.core.Session;
 import io.gatling.javaapi.core.Simulation;
 import io.gatling.javaapi.http.HttpProtocolBuilder;
 
+import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
@@ -13,13 +14,13 @@ import static io.gatling.javaapi.http.HttpDsl.http;
 
 /**
  * https://vsvpxc0lc0.feishu.cn/docx/OQfBd6UXcoWwDWx8bThcs13nnTe
- * 今天喜欢数量
+ * 他人信息
  * GET
  * Q
- * /s/todayLikeCount
+ * /u/{uid}
  * 3000
  */
-public class TodayLikeCountSimulationTest extends Simulation {
+public class OtherUserSimulationTest extends Simulation {
 
   private static int USER_COUNT = 10;
 
@@ -45,7 +46,7 @@ public class TodayLikeCountSimulationTest extends Simulation {
       .inferHtmlResources()
       .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36");
 
-  private ScenarioBuilder scn = scenario(TodayLikeCountSimulationTest.class.getName())
+  private ScenarioBuilder scn = scenario(OtherUserSimulationTest.class.getName())
     .exec(
             http("/login")
               .post("/login")
@@ -54,12 +55,25 @@ public class TodayLikeCountSimulationTest extends Simulation {
                     .check(jsonPath("$.data.token").saveAs("token"))
     )
     .exec(
-            http("/s/todayLikeCount")
-                    .get("/s/todayLikeCount")
+            http("/u/{uid}")
+                    .get("/u/"+ otherUserIds())
                     .header("token","#{token}")
     );
 
     {
         setUp(scn.injectOpen(rampUsers(TEST_USER_COUNT).during(DURATION_SECONDS))).protocols(httpProtocol);
     }
+
+    private static String otherUserIds(){
+      Random random = new Random();
+      return USER_IDS.get(random.nextInt(USER_IDS.size()));
+    }
+
+    private static List<String> USER_IDS = List.of(
+            "6406dc8428116a6c7de48ee1",
+            "6406dc8428116a6c7de48ee2",
+            "6406dc8428116a6c7de48ee3",
+            "6406dc8428116a6c7de48ee4",
+            "6406dc8428116a6c7de48ee5"
+    );
 }

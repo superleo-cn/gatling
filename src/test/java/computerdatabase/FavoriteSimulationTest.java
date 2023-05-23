@@ -13,13 +13,13 @@ import static io.gatling.javaapi.http.HttpDsl.http;
 
 /**
  * https://vsvpxc0lc0.feishu.cn/docx/OQfBd6UXcoWwDWx8bThcs13nnTe
- * 今天喜欢数量
- * GET
- * Q
- * /s/todayLikeCount
- * 3000
+ * 操作-超级喜欢
+ * POST
+ * T
+ * /favorite
+ * 1000
  */
-public class TodayLikeCountSimulationTest extends Simulation {
+public class FavoriteSimulationTest extends Simulation {
 
   private static int USER_COUNT = 10;
 
@@ -45,18 +45,26 @@ public class TodayLikeCountSimulationTest extends Simulation {
       .inferHtmlResources()
       .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36");
 
-  private ScenarioBuilder scn = scenario(TodayLikeCountSimulationTest.class.getName())
+  private ScenarioBuilder scn = scenario(FavoriteSimulationTest.class.getName())
     .exec(
             http("/login")
               .post("/login")
                     .header("content-type", "application/json")
                     .body(StringBody(Templates.template))
                     .check(jsonPath("$.data.token").saveAs("token"))
+
     )
     .exec(
-            http("/s/todayLikeCount")
-                    .get("/s/todayLikeCount")
+            http("/recommends")
+                    .get("/recommends")
                     .header("token","#{token}")
+                    .check(jsonPath("$..data[0].id").saveAs("id"))
+    )
+    .exec(
+            http("/favorite")
+                    .post("/favorite")
+                    .header("token","#{token}")
+                    .body(StringBody("{ \"targetId\": \"-#{id}\",\"encryptedKey\": \"encryptedKey\""))
     );
 
     {
