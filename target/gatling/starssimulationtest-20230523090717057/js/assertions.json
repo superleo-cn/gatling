@@ -1,0 +1,10 @@
+{
+  "simulation": "computerdatabase.StarsSimulationTest",
+  "simulationId": "starssimulationtest-20230523090717057",
+  "start": 1684832838096,
+  "description": "",
+  "scenarios": ["computerdatabase.StarsSimulationTest"],
+  "assertions": [
+
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "simulation": "computerdatabase.FavoriteSimulationTest",
+  "simulationId": "favoritesimulationtest-20230523093331507",
+  "start": 1684834412962,
+  "description": "",
+  "scenarios": ["computerdatabase.FavoriteSimulationTest"],
+  "assertions": [
+
+  ]
+}

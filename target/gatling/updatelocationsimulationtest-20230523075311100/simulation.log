@@ -1,0 +1,41 @@
+RUN	computerdatabase.UpdateLocationSimulationTest	updatelocationsimulationtest	1684828391100	 	3.9.5
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828394333
+REQUEST		/login	1684828394329	1684828395046	OK	 
+REQUEST		/updateLocation	1684828395080	1684828395267	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828395270
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828395319
+REQUEST		/login	1684828395318	1684828395507	OK	 
+REQUEST		/updateLocation	1684828395510	1684828395574	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828395575
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828396316
+REQUEST		/login	1684828396314	1684828396377	OK	 
+REQUEST		/updateLocation	1684828396378	1684828396608	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828396614
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828397313
+REQUEST		/login	1684828397312	1684828397413	OK	 
+REQUEST		/updateLocation	1684828397414	1684828397746	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828397747
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828398310
+REQUEST		/login	1684828398308	1684828398362	OK	 
+REQUEST		/updateLocation	1684828398363	1684828398658	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828398659
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828399312
+REQUEST		/login	1684828399311	1684828399353	OK	 
+REQUEST		/updateLocation	1684828399354	1684828399470	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828399470
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828400312
+REQUEST		/login	1684828400309	1684828400382	OK	 
+REQUEST		/updateLocation	1684828400384	1684828400460	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828400460
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828401310
+REQUEST		/login	1684828401309	1684828401353	OK	 
+REQUEST		/updateLocation	1684828401354	1684828401427	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828401427
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828402313
+REQUEST		/login	1684828402311	1684828402354	OK	 
+REQUEST		/updateLocation	1684828402355	1684828402419	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828402420
+USER	computerdatabase.UpdateLocationSimulationTest	START	1684828403312
+REQUEST		/login	1684828403310	1684828403458	OK	 
+REQUEST		/updateLocation	1684828403460	1684828403590	OK	 
+USER	computerdatabase.UpdateLocationSimulationTest	END	1684828403593

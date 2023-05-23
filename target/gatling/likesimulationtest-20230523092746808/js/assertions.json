@@ -1,0 +1,10 @@
+{
+  "simulation": "computerdatabase.LikeSimulationTest",
+  "simulationId": "likesimulationtest-20230523092746808",
+  "start": 1684834068082,
+  "description": "",
+  "scenarios": ["computerdatabase.LikeSimulationTest"],
+  "assertions": [
+
+  ]
+}
