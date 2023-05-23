@@ -23,7 +23,7 @@ public class UserInfoSimulationTest extends Simulation {
 
   private static int USER_COUNT = 999999;
 
-  private static int TEST_USER_COUNT = 10000;
+  private static int TEST_USER_COUNT = 30000;
 
   private static int DURATION_SECONDS = 10;
 
