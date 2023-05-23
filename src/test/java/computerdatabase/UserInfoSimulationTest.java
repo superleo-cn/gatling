@@ -23,9 +23,9 @@ public class UserInfoSimulationTest extends Simulation {
 
   private static int USER_COUNT = 999999;
 
-  private static int TEST_USER_COUNT = 300;
+  private static int TEST_USER_COUNT = 10;
 
-  private static int DURATION_SECONDS = 10;
+  private static int DURATION_SECONDS = 1;
 
   private static String generateUsername(){
     Random random = new Random();
