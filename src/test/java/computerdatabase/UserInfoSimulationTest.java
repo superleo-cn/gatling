@@ -24,7 +24,6 @@ public class UserInfoSimulationTest extends Simulation {
 
   private static int DURATION_SECONDS = 1;
 
-
   private HttpProtocolBuilder httpProtocol = http
       .baseUrl("http://localhost:18000")
       //.baseUrl("http://internal-k8s-pumpkin-testingr-93a2da19b6-1558117887.ap-southeast-1.elb.amazonaws.com")

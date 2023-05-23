@@ -1,12 +1,13 @@
 package computerdatabase;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import io.gatling.javaapi.core.ScenarioBuilder;
 import io.gatling.javaapi.core.Session;
 import io.gatling.javaapi.core.Simulation;
 import io.gatling.javaapi.http.HttpProtocolBuilder;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Function;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -22,23 +23,9 @@ import static io.gatling.javaapi.http.HttpDsl.http;
  */
 public class OtherUserSimulationTest extends Simulation {
 
-  private static int USER_COUNT = 10;
-
   private static int TEST_USER_COUNT = 10;
 
   private static int DURATION_SECONDS = 10;
-
-  private static String generateUsername(){
-    Random random = new Random();
-    return String.format("tip%s",random.nextInt(USER_COUNT));
-  }
-
-  static final class Templates {
-    public static final Function<Session, String> template = session -> {
-      String data = "{ \"username\": \"" + generateUsername() + "\",\"password\": \"abc123\",\"clientId\": \"63fd83a3bfb0172d558a50b9\",\"platform\": 4}";
-      return data;
-    };
-  }
 
   private HttpProtocolBuilder httpProtocol = http
       //.baseUrl("http://localhost:18000")
@@ -48,32 +35,52 @@ public class OtherUserSimulationTest extends Simulation {
 
   private ScenarioBuilder scn = scenario(OtherUserSimulationTest.class.getName())
     .exec(
-            http("/login")
-              .post("/login")
-                    .header("content-type", "application/json")
-                    .body(StringBody(Templates.template))
-                    .check(jsonPath("$.data.token").saveAs("token"))
-    )
-    .exec(
             http("/u/{uid}")
-                    .get("/u/"+ otherUserIds())
-                    .header("token","#{token}")
+                    .get("/u/"+ randomUser().get(0))
+                    .header("token",getToken())
     );
 
     {
         setUp(scn.injectOpen(rampUsers(TEST_USER_COUNT).during(DURATION_SECONDS))).protocols(httpProtocol);
     }
 
-    private static String otherUserIds(){
+    private static String getToken(){
+      List<String> user = randomUser();
+      return generateToke(user.get(0),user.get(1));
+    }
+    private static List<String> randomUser(){
       Random random = new Random();
-      return USER_IDS.get(random.nextInt(USER_IDS.size()));
+      return USERS.get(random.nextInt(USERS.size()));
     }
 
-    private static List<String> USER_IDS = List.of(
-            "6406dc8428116a6c7de48ee1",
-            "6406dc8428116a6c7de48ee2",
-            "6406dc8428116a6c7de48ee3",
-            "6406dc8428116a6c7de48ee4",
-            "6406dc8428116a6c7de48ee5"
+    private static String generateToke(String id,String username){
+      return createToken(id,username,"","");
+    }
+
+    public static String createToken(String id, String username, String nickname, String wallet) {
+      Date iatDate = new Date();
+
+      Calendar nowTime = Calendar.getInstance();
+      nowTime.add(Calendar.DATE, 7);
+      Date expiresDate = nowTime.getTime();
+
+      Map<String, Object> map = new HashMap<>();
+      map.put("alg", "HS256");
+      map.put("typ", "JWT");
+
+      return JWT.create().withHeader(map)
+              .withClaim("id", id)
+              .withClaim("username", username)
+              .withClaim("nickname", nickname)
+              .withClaim("wallet", wallet)
+              // sign time
+              .withIssuedAt(iatDate)
+              // expire time
+              .withExpiresAt(expiresDate)
+              .sign(Algorithm.HMAC256("7195d0728629969a"));
+    }
+
+    private static List<List<String>> USERS = List.of(
+            List.of("id","username")
     );
 }
