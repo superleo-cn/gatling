@@ -13,7 +13,7 @@ import static io.gatling.javaapi.http.HttpDsl.http;
 
 /**
  * https://vsvpxc0lc0.feishu.cn/docx/OQfBd6UXcoWwDWx8bThcs13nnTe
- * 操作-超级喜欢
+ * 登录
  * POST
  * T
  * /login
