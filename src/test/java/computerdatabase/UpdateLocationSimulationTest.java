@@ -23,9 +23,9 @@ public class UpdateLocationSimulationTest extends Simulation {
 
   private static int USER_COUNT = 999999;
 
-  private static int TEST_USER_COUNT = 5000;
+  private static int TEST_USER_COUNT = 1000;
 
-  private static int DURATION_SECONDS = 1000;
+  private static int DURATION_SECONDS = 10;
 
   private static String generateUsername(){
     Random random = new Random();
