@@ -39,6 +39,7 @@ public class LikeSimulationTest extends Simulation {
                     http("/like")
                             .post("/like")
                             .header("token", session -> getToken())
+                            .header("content-type", "application/json")
                             .body(StringBody(v -> "{ \"targetId\": \"" + randomUser().get(0) + "\",\"encryptedKey\": \"encryptedKey\""))
             );
 

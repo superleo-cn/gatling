@@ -38,6 +38,7 @@ public class TodayLikeCountSimulationTest extends Simulation {
             .exec(
                     http("/s/todayLikeCount")
                             .get("/s/todayLikeCount")
+                            .header("content-type", "application/json")
                             .header("token", session -> getToken())
             );
 

@@ -39,6 +39,7 @@ public class FavoriteSimulationTest extends Simulation {
                     http("/favorite")
                             .post("/favorite")
                             .header("token", session -> getToken())
+                            .header("content-type", "application/json")
                             .body(StringBody(v -> "{ \"targetId\": \"" + randomUser().get(0) + "\",\"encryptedKey\": \"encryptedKey\""))
             );
 

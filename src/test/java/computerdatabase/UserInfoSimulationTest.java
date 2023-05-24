@@ -39,6 +39,7 @@ public class UserInfoSimulationTest extends Simulation {
                     http("/userInfo")
                             .get("/userInfo")
                             .header("token", session -> getToken())
+                            .header("content-type", "application/json")
                             .check(status().is(200))
             );
 
