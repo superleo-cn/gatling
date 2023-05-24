@@ -21,9 +21,9 @@ import static io.gatling.javaapi.http.HttpDsl.status;
  * 3000
  */
 public class UserInfoSimulationTest extends Simulation {
-    private static int TEST_USER_COUNT = 100;
+    private static int TEST_USER_COUNT = 30000;
 
-    private static int DURATION_SECONDS = 2;
+    private static int DURATION_SECONDS = 10;
 
     private static List<Map<String, Object>> readRecords = csv("test_user.csv").readRecords();
     //private static List<Map<String, Object>> readRecords = csv("dev_user.csv").readRecords();
