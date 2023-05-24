@@ -82,6 +82,8 @@ public class UpdateLocationSimulationTest extends Simulation {
     }
 
     private static List<List<String>> USERS = List.of(
-            List.of("id", "username")
+            List.of("6406dc8428116a6c7de48ee1", "user0"),
+            List.of("6406dc8428116a6c7de48ee2", "user1"),
+            List.of("6406dc8428116a6c7de48ee3", "user2")
     );
 }
