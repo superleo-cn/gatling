@@ -35,7 +35,7 @@ public class RecommendsSimulationTest extends Simulation {
             .exec(
                     http("/recommends")
                             .get("/recommends")
-                            .header("token", getToken())
+                            .header("token", session -> getToken())
             );
 
     {

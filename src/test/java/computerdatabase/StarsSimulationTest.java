@@ -35,7 +35,7 @@ public class StarsSimulationTest extends Simulation {
             .exec(
                     http("/stars")
                             .get("/stars")
-                            .header("token", getToken())
+                            .header("token", session -> getToken())
             );
 
     {

@@ -36,7 +36,7 @@ public class UpdateLocationSimulationTest extends Simulation {
                     http("/updateLocation")
                             .post("/updateLocation")
                             .header("content-type", "application/json")
-                            .header("token", getToken())
+                            .header("token", session -> getToken())
                             .body(StringBody("{ \"x\": \"-122.406417\",\"y\": \"37.785834\",\"address\": \"unknown\",\"refresh\": 1}"))
             );
 

@@ -37,7 +37,7 @@ public class DisLikeSimulationTest extends Simulation {
             .exec(
                     http("/dislike")
                             .post("/dislike")
-                            .header("token", getToken())
+                            .header("token", session -> getToken())
                             .body(StringBody("{ \"targetId\": \"" + randomUser().get(0) + "\",\"encryptedKey\": \"encryptedKey\""))
             );
 

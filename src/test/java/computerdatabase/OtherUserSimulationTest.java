@@ -37,7 +37,7 @@ public class OtherUserSimulationTest extends Simulation {
             .exec(
                     http("/u/{uid}")
                             .get("/u/" + randomUser().get(0))
-                            .header("token", getToken())
+                            .header("token", session -> getToken())
             );
 
     {
