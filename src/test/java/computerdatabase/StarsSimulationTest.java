@@ -25,6 +25,9 @@ public class StarsSimulationTest extends Simulation {
 
     private static int DURATION_SECONDS = 10;
 
+    private static List<Map<String, Object>> readRecords = csv("test_user.csv").readRecords();
+    //private static List<Map<String, Object>> readRecords = csv("dev_user.csv").readRecords();
+
     private HttpProtocolBuilder httpProtocol = http
             //.baseUrl("http://localhost:18000")
             .baseUrl("http://internal-k8s-pumpkin-testingr-93a2da19b6-1558117887.ap-southeast-1.elb.amazonaws.com")
@@ -43,13 +46,13 @@ public class StarsSimulationTest extends Simulation {
     }
 
     private static String getToken() {
-        List<String> user = randomUser();
-        return generateToke(user.get(0), user.get(1));
+        Map<String,Object> user = randomUser();
+        return generateToke((String)user.get("id"), (String)user.get("username"));
     }
 
-    private static List<String> randomUser() {
+    private static Map<String,Object> randomUser() {
         Random random = new Random();
-        return USERS.get(random.nextInt(USERS.size()));
+        return readRecords.get(random.nextInt(readRecords.size()));
     }
 
     private static String generateToke(String id, String username) {

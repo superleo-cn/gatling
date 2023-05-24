@@ -21,13 +21,16 @@ import static io.gatling.javaapi.http.HttpDsl.http;
  */
 public class UpdateLocationSimulationTest extends Simulation {
 
-    private static int TEST_USER_COUNT = 1000;
+    private static int TEST_USER_COUNT = 10;
 
-    private static int DURATION_SECONDS = 10;
+    private static int DURATION_SECONDS = 1;
+
+    private static List<Map<String, Object>> readRecords = csv("test_user.csv").readRecords();
+    //private static List<Map<String, Object>> readRecords = csv("dev_user.csv").readRecords();
 
     private HttpProtocolBuilder httpProtocol = http
-            //.baseUrl("http://localhost:18000")
-            .baseUrl("http://internal-k8s-pumpkin-testingr-93a2da19b6-1558117887.ap-southeast-1.elb.amazonaws.com")
+            .baseUrl("http://localhost:18000")
+            //.baseUrl("http://internal-k8s-pumpkin-testingr-93a2da19b6-1558117887.ap-southeast-1.elb.amazonaws.com")
             .inferHtmlResources()
             .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36");
 
@@ -45,13 +48,13 @@ public class UpdateLocationSimulationTest extends Simulation {
     }
 
     private static String getToken() {
-        List<String> user = randomUser();
-        return generateToke(user.get(0), user.get(1));
+        Map<String,Object> user = randomUser();
+        return generateToke((String)user.get("id"), (String)user.get("username"));
     }
 
-    private static List<String> randomUser() {
+    private static Map<String,Object> randomUser() {
         Random random = new Random();
-        return USERS.get(random.nextInt(USERS.size()));
+        return readRecords.get(random.nextInt(readRecords.size()));
     }
 
     private static String generateToke(String id, String username) {
@@ -81,9 +84,4 @@ public class UpdateLocationSimulationTest extends Simulation {
                 .sign(Algorithm.HMAC256("7195d0728629969a"));
     }
 
-    private static List<List<String>> USERS = List.of(
-            List.of("6406dc8428116a6c7de48ee1", "user0"),
-            List.of("6406dc8428116a6c7de48ee2", "user1"),
-            List.of("6406dc8428116a6c7de48ee3", "user2")
-    );
 }
