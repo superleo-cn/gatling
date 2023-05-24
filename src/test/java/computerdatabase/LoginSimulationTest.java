@@ -21,15 +21,14 @@ import static io.gatling.javaapi.http.HttpDsl.http;
  */
 public class LoginSimulationTest extends Simulation {
 
-    private static int USER_COUNT = 10;
+    private static int TEST_USER_COUNT = 100;
 
-    private static int TEST_USER_COUNT = 10;
+    private static int DURATION_SECONDS = 2;
 
-    private static int DURATION_SECONDS = 10;
 
     private static String generateUsername() {
         Random random = new Random();
-        return String.format("tip%s", random.nextInt(USER_COUNT));
+        return String.format("tip%s", random.nextInt(999999));
     }
 
     static final class Templates {
@@ -55,6 +54,6 @@ public class LoginSimulationTest extends Simulation {
             );
 
     {
-        setUp(scn.injectOpen(rampUsers(TEST_USER_COUNT).during(DURATION_SECONDS))).protocols(httpProtocol);
+        setUp(scn.injectOpen(constantUsersPerSec(TEST_USER_COUNT).during(DURATION_SECONDS))).protocols(httpProtocol);
     }
 }
