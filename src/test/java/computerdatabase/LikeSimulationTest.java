@@ -25,8 +25,8 @@ public class LikeSimulationTest extends Simulation {
 
     private static int DURATION_SECONDS = 1;
 
-    //private static List<Map<String, Object>> readRecords = csv("test_user.csv").readRecords();
-    private static List<Map<String, Object>> readRecords = csv("dev_user.csv").readRecords();
+    private static List<Map<String, Object>> readRecords = csv("test_user.csv").readRecords();
+    //private static List<Map<String, Object>> readRecords = csv("dev_user.csv").readRecords();
 
     private HttpProtocolBuilder httpProtocol = http
             //.baseUrl("http://localhost:18000")
