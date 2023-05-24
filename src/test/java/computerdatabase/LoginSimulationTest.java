@@ -21,9 +21,9 @@ import static io.gatling.javaapi.http.HttpDsl.http;
  */
 public class LoginSimulationTest extends Simulation {
 
-    private static int TEST_USER_COUNT = 100;
+    private static int TEST_USER_COUNT = 3000;
 
-    private static int DURATION_SECONDS = 2;
+    private static int DURATION_SECONDS = 10;
 
 
     private static String generateUsername() {
