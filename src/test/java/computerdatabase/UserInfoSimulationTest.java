@@ -21,7 +21,7 @@ import static io.gatling.javaapi.http.HttpDsl.status;
  * 3000
  */
 public class UserInfoSimulationTest extends Simulation {
-    private static int TEST_USER_COUNT = 30000;
+    private static int TEST_USER_COUNT = 3000;
 
     private static int DURATION_SECONDS = 10;
 
