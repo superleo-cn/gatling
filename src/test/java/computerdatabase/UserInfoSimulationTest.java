@@ -10082,6 +10082,6 @@ public class UserInfoSimulationTest extends Simulation {
             List.of("646c2691077e843cfcbcdd44","lark42959"),
             List.of("646c2691077e843cfcbcde08","lark43177"),
             List.of("646c2691077e843cfcbcdd4c","lark42983"),
-            List.of("646c2691077e843cfcbcddd9","lark43141"),
+            List.of("646c2691077e843cfcbcddd9","lark43141")
     );
 }
