@@ -46,7 +46,6 @@ public class UserInfoSimulationTest extends Simulation {
 
     private static String getToken() {
         List<String> user = randomUser();
-        System.out.println(user);
         return generateToke(user.get(0), user.get(1));
     }
 
