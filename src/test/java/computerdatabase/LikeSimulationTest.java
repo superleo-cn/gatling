@@ -21,12 +21,12 @@ import static io.gatling.javaapi.http.HttpDsl.http;
  */
 public class LikeSimulationTest extends Simulation {
 
-    private static int TEST_USER_COUNT = 1000;
+    private static int TEST_USER_COUNT = 1;
 
-    private static int DURATION_SECONDS = 10;
+    private static int DURATION_SECONDS = 1;
 
-    private static List<Map<String, Object>> readRecords = csv("test_user.csv").readRecords();
-    //private static List<Map<String, Object>> readRecords = csv("dev_user.csv").readRecords();
+    //private static List<Map<String, Object>> readRecords = csv("test_user.csv").readRecords();
+    private static List<Map<String, Object>> readRecords = csv("dev_user.csv").readRecords();
 
     private HttpProtocolBuilder httpProtocol = http
             //.baseUrl("http://localhost:18000")
@@ -40,7 +40,7 @@ public class LikeSimulationTest extends Simulation {
                             .post("/like")
                             .header("token", session -> getToken())
                             .header("content-type", "application/json")
-                            .body(StringBody(v -> "{ \"targetId\": \"" + randomUser().get(0) + "\",\"encryptedKey\": \"encryptedKey\""))
+                            .body(StringBody(v -> "{ \"targetId\": \"" + randomUser().get(0) + "\",\"encryptedKey\": \"encryptedKey\"}"))
             );
 
     {
