@@ -21,16 +21,16 @@ import static io.gatling.javaapi.http.HttpDsl.http;
  */
 public class UpdateLocationSimulationTest extends Simulation {
 
-    private static int TEST_USER_COUNT = 10;
+    private static int TEST_USER_COUNT = 1000;
 
-    private static int DURATION_SECONDS = 1;
+    private static int DURATION_SECONDS = 10;
 
     private static List<Map<String, Object>> readRecords = csv("test_user.csv").readRecords();
     //private static List<Map<String, Object>> readRecords = csv("dev_user.csv").readRecords();
 
     private HttpProtocolBuilder httpProtocol = http
-            .baseUrl("http://localhost:18000")
-            //.baseUrl("http://internal-k8s-pumpkin-testingr-93a2da19b6-1558117887.ap-southeast-1.elb.amazonaws.com")
+            //.baseUrl("http://localhost:18000")
+            .baseUrl("http://internal-k8s-pumpkin-testingr-93a2da19b6-1558117887.ap-southeast-1.elb.amazonaws.com")
             .inferHtmlResources()
             .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36");
 
