@@ -21,7 +21,7 @@ import static io.gatling.javaapi.http.HttpDsl.http;
  */
 public class FavoriteSimulationTest extends Simulation {
 
-    private static int TEST_USER_COUNT = 1000;
+    private static int TEST_USER_COUNT = 2000;
 
     private static int DURATION_SECONDS = 10;
 
