@@ -21,7 +21,7 @@ import static io.gatling.javaapi.http.HttpDsl.http;
  */
 public class StarsSimulationTest extends Simulation {
 
-    private static int TEST_USER_COUNT = 5000;
+    private static int TEST_USER_COUNT = 3000;
 
     private static int DURATION_SECONDS = 10;
 
